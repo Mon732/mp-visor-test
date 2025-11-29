@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c48ouuxlg45ik"]
+[gd_scene load_steps=14 format=3 uid="uid://c48ouuxlg45ik"]
 
 [ext_resource type="PackedScene" uid="uid://bf8hajxlmh3lw" path="res://stage/stage.tscn" id="1_ig7tw"]
 [ext_resource type="Shader" uid="uid://cnti5a74bnjsu" path="res://shaders/pp_lut.gdshader" id="2_0xm2m"]
@@ -6,11 +6,18 @@
 [ext_resource type="Script" uid="uid://ctsfgfac3lmhd" path="res://visors.gd" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://ccopjdwyb6uwq" path="res://shaders/lut_thermal.svg" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://gsdmqppciqco" path="res://ui.gd" id="4_1bvp3"]
+[ext_resource type="Shader" uid="uid://bend8fn42358o" path="res://shaders/pp_convolution.gdshader" id="6_272bh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
 shader = ExtResource("2_0xm2m")
 shader_parameter/bias = Color(0.560784, 0.321569, 0.0509804, 1)
 shader_parameter/lut = ExtResource("3_h2yge")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+shader = ExtResource("6_272bh")
+shader_parameter/bias = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/kernel_1 = PackedFloat32Array(-1, -2, -1, 0, 0, 0, 1, 2, 1)
+shader_parameter/kernel_2 = PackedFloat32Array(-1, 0, 1, -2, 0, 2, -1, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_7mycd"]
 
@@ -49,6 +56,15 @@ camera = NodePath("../MainCamera")
 [node name="Thermal" type="ColorRect" parent="CanvasLayer"]
 visible = false
 material = SubResource("ShaderMaterial_h2yge")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Echo" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_5vw27")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
