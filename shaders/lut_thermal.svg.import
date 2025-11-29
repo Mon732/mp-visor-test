@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co4kg8p8tkb8p"
-path="res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex"
+uid="uid://ccopjdwyb6uwq"
+path="res://.godot/imported/lut_thermal.svg-b506242c8606db87ebc55031c77bce38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex"]
+source_file="res://shaders/lut_thermal.svg"
+dest_files=["res://.godot/imported/lut_thermal.svg-b506242c8606db87ebc55031c77bce38.ctex"]
 
 [params]
 

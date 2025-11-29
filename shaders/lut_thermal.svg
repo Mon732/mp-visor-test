@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
-   sodipodi:docname="ironbow.svg"
+   sodipodi:docname="lut_thermal.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -26,8 +26,8 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="1.6197639"
-     inkscape:cx="116.68368"
-     inkscape:cy="-62.354769"
+     inkscape:cx="83.34548"
+     inkscape:cy="-62.354767"
      inkscape:window-width="1080"
      inkscape:window-height="1857"
      inkscape:window-x="2552"
@@ -62,23 +62,23 @@
          id="stop867" />
       <stop
          style="stop-color:#3b00ff;stop-opacity:1;"
-         offset="0.16239317"
+         offset="0.10256411"
          id="stop875" />
       <stop
          style="stop-color:#a600ff;stop-opacity:1;"
-         offset="0.31999999"
+         offset="0.23666666"
          id="stop877" />
       <stop
          style="stop-color:#ff0000;stop-opacity:1;"
-         offset="0.47999999"
+         offset="0.3902564"
          id="stop2335" />
       <stop
          style="stop-color:#ffa000;stop-opacity:1;"
-         offset="0.63999999"
+         offset="0.59940171"
          id="stop1607" />
       <stop
          style="stop-color:#efff00;stop-opacity:1;"
-         offset="0.80000001"
+         offset="0.81282055"
          id="stop879" />
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
