@@ -1,2 +1,7 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+#Mark binary files, prevents git from attempting merges or EOL correction
+*.scn binary
+*.webp binary
+*.res binary
