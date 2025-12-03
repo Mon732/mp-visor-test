@@ -2,9 +2,12 @@ class_name Player
 extends Camera3D
 
 @export var move_speed : float = 10.0
-@export var sensitivity : float = 1.0
+@export var sensitivity : float = 0.01
 
 @onready var animation_player : AnimationPlayer = $"AnimationPlayer"
+
+@export var rot_x : float
+@export var rot_y : float
 
 signal visor_changed(visor:Game.Visors)
 
@@ -14,6 +17,8 @@ const BITMASK_NORMAL = ~(BITMASK_THERMAL | BITMASK_ECHO)
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	rot_x = rotation.y
+	rot_y = rotation.x
 
 func _process(delta):
 	if (Input.is_action_just_pressed("free_mouse")):
@@ -43,8 +48,11 @@ func _process(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		rotate_object_local(Vector3(1.0, 0.0, 0.0), deg_to_rad(event.relative.y * sensitivity * -1))
-		rotate_object_local(Vector3(0.0, 1.0, 0.0), deg_to_rad(event.relative.x * sensitivity * -1))
+		rot_x -= event.relative.x * sensitivity
+		rot_y -= event.relative.y * sensitivity
+		transform.basis = Basis()
+		rotate_object_local(Vector3.UP, rot_x)
+		rotate_object_local(Vector3.RIGHT, rot_y)
 	
 	if (Input.is_action_just_pressed("visor_1")):
 		cull_mask = BITMASK_NORMAL
