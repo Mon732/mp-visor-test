@@ -7,6 +7,7 @@ const TileMaterial = preload("res://stage/tile_material.tres")
 const TileMaterialEcho = preload("res://stage/tile_material_echo.tres")
 
 @onready var grid_map : GridMap = $"GridMap"
+@onready var environment : WorldEnvironment = $"WorldEnvironment"
 @onready var light : DirectionalLight3D = $"DirectionalLight3D"
 
 func _ready() -> void:
@@ -27,9 +28,11 @@ func on_visor_changed(visor:int):
 	var new_material : Material
 	if (visor == Game.Visors.VISOR_ECHO):
 		new_material = TileMaterialEcho
+		environment.environment.background_mode = Environment.BG_CLEAR_COLOR
 		light.shadow_enabled = false
 	else:
 		new_material = TileMaterial
+		environment.environment.background_mode = Environment.BG_SKY
 		light.shadow_enabled = true
 	
 	for item in item_list:
