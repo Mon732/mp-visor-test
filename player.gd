@@ -49,12 +49,12 @@ func _input(event):
 	if (Input.is_action_just_pressed("visor_1")):
 		cull_mask = BITMASK_NORMAL
 		visor_changed.emit(Game.Visors.VISOR_NONE)
-		echo_wave.on_visor_changed(Game.Visors.VISOR_NONE)
+		echo_wave.disable_wave()
 	elif (Input.is_action_just_pressed("visor_2")):
 		cull_mask = BITMASK_NORMAL | BITMASK_THERMAL
 		visor_changed.emit(Game.Visors.VISOR_THERMAL)
-		echo_wave.on_visor_changed(Game.Visors.VISOR_THERMAL)
+		echo_wave.disable_wave()
 	elif (Input.is_action_just_pressed("visor_3")):
 		cull_mask = BITMASK_NORMAL | BITMASK_ECHO
 		visor_changed.emit(Game.Visors.VISOR_ECHO)
-		echo_wave.on_visor_changed(Game.Visors.VISOR_ECHO)
+		echo_wave.enable_wave()
