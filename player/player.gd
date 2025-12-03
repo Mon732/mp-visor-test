@@ -4,7 +4,7 @@ extends Camera3D
 @export var move_speed : float = 10.0
 @export var sensitivity : float = 1.0
 
-@onready var echo_wave : EchoWave = $"EchoWave"
+@onready var animation_player : AnimationPlayer = $"AnimationPlayer"
 
 signal visor_changed(visor:Game.Visors)
 
@@ -49,12 +49,18 @@ func _input(event):
 	if (Input.is_action_just_pressed("visor_1")):
 		cull_mask = BITMASK_NORMAL
 		visor_changed.emit(Game.Visors.VISOR_NONE)
-		echo_wave.disable_wave()
+		disable_wave()
 	elif (Input.is_action_just_pressed("visor_2")):
 		cull_mask = BITMASK_NORMAL | BITMASK_THERMAL
 		visor_changed.emit(Game.Visors.VISOR_THERMAL)
-		echo_wave.disable_wave()
+		disable_wave()
 	elif (Input.is_action_just_pressed("visor_3")):
 		cull_mask = BITMASK_NORMAL | BITMASK_ECHO
 		visor_changed.emit(Game.Visors.VISOR_ECHO)
-		echo_wave.enable_wave()
+		enable_wave()
+
+func enable_wave():
+	animation_player.play("echo_wave")
+
+func disable_wave():
+	animation_player.stop()

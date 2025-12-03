@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0rltrf4jnuhw"]
+[gd_scene load_steps=6 format=3 uid="uid://d0rltrf4jnuhw"]
 
 [ext_resource type="Script" uid="uid://c44tpdb01qln" path="res://player/player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://ww856i8j3klj" path="res://player/echo_wave.svg" id="2_hqtel"]
-[ext_resource type="Script" uid="uid://bluvkedv8fne7" path="res://player/echo_wave.gd" id="3_sweqy"]
 
 [sub_resource type="Animation" id="Animation_efxa6"]
 length = 0.001
@@ -53,9 +52,9 @@ transform = Transform3D(0.346625, 0, -0.938004, 0, 1, 0, 0.938004, 0, 0.346625, 
 layers = 2147483647
 size = Vector3(0.001, 0.001, 0.001)
 texture_albedo = ExtResource("2_hqtel")
-script = ExtResource("3_sweqy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EchoWave"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../EchoWave")
 libraries = {
 &"": SubResource("AnimationLibrary_dg77c")
 }
