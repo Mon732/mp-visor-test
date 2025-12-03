@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf8hajxlmh3lw"]
+[gd_scene load_steps=13 format=3 uid="uid://bf8hajxlmh3lw"]
 
 [ext_resource type="Script" uid="uid://vw47tquoshc7" path="res://stage/world.gd" id="1_re4bd"]
 [ext_resource type="PackedScene" uid="uid://dmlvwah3ypol0" path="res://stage/grid_map.scn" id="1_t0f53"]
@@ -24,6 +24,26 @@ tonemap_mode = 4
 fog_enabled = true
 fog_density = 0.0015
 fog_sky_affect = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ve7pq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxybx"]
+render_priority = -1
+no_depth_test = true
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_au0sk"]
+render_priority = -1
+no_depth_test = true
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7g2e"]
+render_priority = -1
+no_depth_test = true
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_re4bd")
@@ -119,3 +139,32 @@ modulate = Color(0.301961, 0.623529, 0.862745, 1)
 text = "You have found
 a secret area!"
 font_size = 48
+
+[node name="OrbRed" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43679, -5.78167, 2.79976)
+layers = 2
+mesh = SubResource("SphereMesh_ve7pq")
+surface_material_override/0 = SubResource("StandardMaterial3D_cxybx")
+
+[node name="OrbGreen" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43679, -5.78167, -0.22967)
+layers = 2
+mesh = SubResource("SphereMesh_ve7pq")
+surface_material_override/0 = SubResource("StandardMaterial3D_au0sk")
+
+[node name="OrbBlue" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43679, -5.78167, -3.20678)
+layers = 2
+mesh = SubResource("SphereMesh_ve7pq")
+surface_material_override/0 = SubResource("StandardMaterial3D_u7g2e")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.965926, -0.166366, 0.198267, 1.42109e-14, 0.766044, 0.642788, -0.258819, 0.620886, -0.739941, 0, 0, 0)
+layers = 2
+light_color = Color(0.5, 0.5, 0.5, 1)
+light_cull_mask = 2147483647
+shadow_bias = 0.02
+shadow_blur = 1.5
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 55.0
