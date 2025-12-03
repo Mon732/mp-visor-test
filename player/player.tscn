@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0rltrf4jnuhw"]
 
-[ext_resource type="Script" uid="uid://c44tpdb01qln" path="res://player.gd" id="1_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://ww856i8j3klj" path="res://echo_wave.svg" id="2_hqtel"]
-[ext_resource type="Script" uid="uid://bluvkedv8fne7" path="res://echo_wave.gd" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://c44tpdb01qln" path="res://player/player.gd" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://ww856i8j3klj" path="res://player/echo_wave.svg" id="2_hqtel"]
+[ext_resource type="Script" uid="uid://bluvkedv8fne7" path="res://player/echo_wave.gd" id="3_sweqy"]
 
 [sub_resource type="Animation" id="Animation_efxa6"]
 length = 0.001

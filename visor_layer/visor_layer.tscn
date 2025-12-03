@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt1nuad10l1r7"]
+
+[ext_resource type="Script" uid="uid://ctsfgfac3lmhd" path="res://visor_layer/visor_layer.gd" id="1_8oe74"]
+[ext_resource type="Shader" uid="uid://cnti5a74bnjsu" path="res://shaders/pp_lut.gdshader" id="2_i26ex"]
+[ext_resource type="Texture2D" uid="uid://ccopjdwyb6uwq" path="res://shaders/lut_thermal.svg" id="3_svilb"]
+[ext_resource type="Shader" uid="uid://bend8fn42358o" path="res://shaders/pp_convolution.gdshader" id="4_8r23s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
+shader = ExtResource("2_i26ex")
+shader_parameter/bias = Color(0.560784, 0.321569, 0.0509804, 1)
+shader_parameter/lut = ExtResource("3_svilb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+shader = ExtResource("4_8r23s")
+shader_parameter/bias = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/kernel_1 = PackedFloat32Array(-1, -2, -1, 0, 0, 0, 1, 2, 1)
+shader_parameter/kernel_2 = PackedFloat32Array(-1, 0, 1, -2, 0, 2, -1, 0, 1)
+
+[node name="VisorLayer" type="CanvasLayer"]
+script = ExtResource("1_8oe74")
+
+[node name="Thermal" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_h2yge")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Echo" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_5vw27")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
