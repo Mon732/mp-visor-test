@@ -81,3 +81,8 @@ visor_4={
 
 3d_render/layer_1="Level"
 3d_render/layer_2="Thermal"
+3d_render/layer_3="Echo"
+
+[rendering]
+
+anti_aliasing/quality/use_debanding=true
