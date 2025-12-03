@@ -3,11 +3,11 @@
 class_name World
 extends Node3D
 
+const TileMaterial = preload("res://stage/tile_material.tres")
+const TileMaterialEcho = preload("res://stage/tile_material_echo.tres")
+
 @onready var grid_map : GridMap = $"GridMap"
 @onready var light : DirectionalLight3D = $"DirectionalLight3D"
-
-var tile_material = preload("res://stage/tile_material.tres")
-var tile_material_echo = preload("res://stage/tile_material_echo.tres")
 
 func _ready() -> void:
 	if RenderingServer.get_current_rendering_method() == "gl_compatibility":
@@ -26,10 +26,10 @@ func on_visor_changed(visor:int):
 
 	var new_material : Material
 	if (visor == Game.Visors.VISOR_ECHO):
-		new_material = tile_material_echo
+		new_material = TileMaterialEcho
 		light.shadow_enabled = false
 	else:
-		new_material = tile_material
+		new_material = TileMaterial
 		light.shadow_enabled = true
 	
 	for item in item_list:

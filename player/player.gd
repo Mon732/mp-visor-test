@@ -1,19 +1,19 @@
 class_name Player
 extends Camera3D
 
-@export var move_speed : float = 10.0
-@export var sensitivity : float = 0.01
-
-@onready var animation_player : AnimationPlayer = $"AnimationPlayer"
-
-@export var rot_x : float
-@export var rot_y : float
-
 signal visor_changed(visor:Game.Visors)
 
 const BITMASK_THERMAL = 2
 const BITMASK_ECHO = 4
 const BITMASK_NORMAL = ~(BITMASK_THERMAL | BITMASK_ECHO)
+
+@export var move_speed : float = 10.0
+@export var sensitivity : float = 0.01
+
+var rot_x : float
+var rot_y : float
+
+@onready var animation_player : AnimationPlayer = $"AnimationPlayer"
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
