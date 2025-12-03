@@ -6,7 +6,6 @@ extends CanvasLayer
 func _ready():
 	Engine.max_fps = 300
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	fps_label.text = "FPS %d" % Engine.get_frames_per_second()

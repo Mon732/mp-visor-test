@@ -1,7 +1,7 @@
 class_name World
 extends Node3D
 
-@onready var gridMap : GridMap = $"GridMap"
+@onready var grid_map : GridMap = $"GridMap"
 @onready var light : DirectionalLight3D = $"DirectionalLight3D"
 
 var tile_material = preload("res://stage/tile_material.tres")
@@ -21,10 +21,10 @@ func _ready() -> void:
 
 func on_visor_changed(visor:int):
 	print(visor)
-	var item_list : PackedInt32Array = gridMap.mesh_library.get_item_list()
+	var item_list : PackedInt32Array = grid_map.mesh_library.get_item_list()
 
 	var new_material : Material
-	if (visor == Game.VISORS.VISOR_ECHO):
+	if (visor == Game.Visors.VISOR_ECHO):
 		new_material = tile_material_echo
 		light.shadow_enabled = false
 	else:
@@ -32,4 +32,4 @@ func on_visor_changed(visor:int):
 		light.shadow_enabled = true
 	
 	for item in item_list:
-		gridMap.mesh_library.get_item_mesh(item).surface_set_material(0, new_material)
+		grid_map.mesh_library.get_item_mesh(item).surface_set_material(0, new_material)

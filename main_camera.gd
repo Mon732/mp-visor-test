@@ -4,7 +4,7 @@ extends Camera3D
 @export var move_speed : float = 10.0
 @export var sensitivity : float = 1.0
 
-@onready var echoWave : EchoWave = $"EchoWave"
+@onready var echo_wave : EchoWave = $"EchoWave"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,11 +37,10 @@ func _process(delta):
 	direction *= move_speed * delta
 	translate(direction)
 
-
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_object_local(Vector3(1.0, 0.0, 0.0), deg_to_rad(event.relative.y * sensitivity * -1))
 		rotate_object_local(Vector3(0.0, 1.0, 0.0), deg_to_rad(event.relative.x * sensitivity * -1))
 
 func on_visor_changed(visor:int):
-	echoWave.on_visor_changed(visor)
+	echo_wave.on_visor_changed(visor)
