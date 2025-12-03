@@ -6,8 +6,8 @@ extends Node3D
 @onready var player : Player = $"Player"
 
 func _ready():
-    visor_layer.visor_changed.connect(on_visor_changed)
+    player.visor_changed.connect(on_visor_changed)
 
 func on_visor_changed(visor:int):
     world.on_visor_changed(visor)
-    player.on_visor_changed(visor)
+    visor_layer.on_visor_changed(visor)

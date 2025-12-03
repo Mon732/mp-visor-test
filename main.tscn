@@ -27,9 +27,8 @@ script = ExtResource("1_5vw27")
 
 [node name="Player" parent="." instance=ExtResource("3_5vw27")]
 
-[node name="VisorLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera")]
+[node name="VisorLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_7mycd")
-camera = NodePath("../Player")
 
 [node name="Thermal" type="ColorRect" parent="VisorLayer"]
 visible = false

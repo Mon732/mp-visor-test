@@ -6,11 +6,15 @@ extends Camera3D
 
 @onready var echo_wave : EchoWave = $"EchoWave"
 
-# Called when the node enters the scene tree for the first time.
+signal visor_changed(visor:Game.Visors)
+
+const BITMASK_THERMAL = 2
+const BITMASK_ECHO = 4
+const BITMASK_NORMAL = ~(BITMASK_THERMAL | BITMASK_ECHO)
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("free_mouse")):
 		if (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
@@ -41,6 +45,16 @@ func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_object_local(Vector3(1.0, 0.0, 0.0), deg_to_rad(event.relative.y * sensitivity * -1))
 		rotate_object_local(Vector3(0.0, 1.0, 0.0), deg_to_rad(event.relative.x * sensitivity * -1))
-
-func on_visor_changed(visor:int):
-	echo_wave.on_visor_changed(visor)
+	
+	if (Input.is_action_just_pressed("visor_1")):
+		cull_mask = BITMASK_NORMAL
+		visor_changed.emit(Game.Visors.VISOR_NONE)
+		echo_wave.on_visor_changed(Game.Visors.VISOR_NONE)
+	elif (Input.is_action_just_pressed("visor_2")):
+		cull_mask = BITMASK_NORMAL | BITMASK_THERMAL
+		visor_changed.emit(Game.Visors.VISOR_THERMAL)
+		echo_wave.on_visor_changed(Game.Visors.VISOR_THERMAL)
+	elif (Input.is_action_just_pressed("visor_3")):
+		cull_mask = BITMASK_NORMAL | BITMASK_ECHO
+		visor_changed.emit(Game.Visors.VISOR_ECHO)
+		echo_wave.on_visor_changed(Game.Visors.VISOR_ECHO)
