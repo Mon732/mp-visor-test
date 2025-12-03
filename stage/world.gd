@@ -1,3 +1,5 @@
+#Stage copied from Godot 3D Platformer example
+
 class_name World
 extends Node3D
 
