@@ -1,15 +1,30 @@
 [gd_scene load_steps=20 format=3 uid="uid://c48ouuxlg45ik"]
 
-[ext_resource type="Script" uid="uid://cn06qct56mi2" path="res://game.gd" id="1_5vw27"]
+[ext_resource type="Script" uid="uid://cn06qct56mi2" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bf8hajxlmh3lw" path="res://stage/stage.tscn" id="1_ig7tw"]
 [ext_resource type="Shader" uid="uid://cnti5a74bnjsu" path="res://shaders/pp_lut.gdshader" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://c44tpdb01qln" path="res://camera_3d.gd" id="2_lquwl"]
-[ext_resource type="Script" uid="uid://ctsfgfac3lmhd" path="res://visors.gd" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://c44tpdb01qln" path="res://main_camera.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://ctsfgfac3lmhd" path="res://visor_layer.gd" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://ccopjdwyb6uwq" path="res://shaders/lut_thermal.svg" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://gsdmqppciqco" path="res://ui.gd" id="4_1bvp3"]
 [ext_resource type="Shader" uid="uid://bend8fn42358o" path="res://shaders/pp_convolution.gdshader" id="6_272bh"]
 [ext_resource type="Texture2D" uid="uid://ww856i8j3klj" path="res://echo_wave.svg" id="9_kek77"]
 [ext_resource type="Script" uid="uid://bluvkedv8fne7" path="res://echo_wave.gd" id="10_4c57u"]
+
+[sub_resource type="Animation" id="Animation_efxa6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001)]
+}
 
 [sub_resource type="Animation" id="Animation_4c57u"]
 resource_name = "echo_wave"
@@ -26,21 +41,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.001, 0.001, 0.001), Vector3(100, 100, 100)]
-}
-
-[sub_resource type="Animation" id="Animation_efxa6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.001, 0.001, 0.001)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dg77c"]
@@ -80,10 +80,10 @@ no_depth_test = true
 emission_enabled = true
 emission = Color(0, 0, 1, 1)
 
-[node name="Node3D" type="Node3D"]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_5vw27")
 
-[node name="Stage" parent="." instance=ExtResource("1_ig7tw")]
+[node name="World" parent="." instance=ExtResource("1_ig7tw")]
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.346625, 0, 0.938004, 0, 1, 0, -0.938004, 0, 0.346625, 0, -5.46368, 0)
@@ -103,11 +103,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_dg77c")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera")]
+[node name="VisorLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("3_7mycd")
 camera = NodePath("../MainCamera")
 
-[node name="Thermal" type="ColorRect" parent="CanvasLayer"]
+[node name="Thermal" type="ColorRect" parent="VisorLayer"]
 visible = false
 material = SubResource("ShaderMaterial_h2yge")
 anchors_preset = 15
@@ -116,7 +116,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Echo" type="ColorRect" parent="CanvasLayer"]
+[node name="Echo" type="ColorRect" parent="VisorLayer"]
 visible = false
 material = SubResource("ShaderMaterial_5vw27")
 anchors_preset = 15

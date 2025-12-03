@@ -1,6 +1,6 @@
+class_name World
 extends Node3D
 
-@onready var game : Game = get_parent()
 @onready var gridMap : GridMap = $"GridMap"
 @onready var light : DirectionalLight3D = $"DirectionalLight3D"
 
@@ -18,8 +18,6 @@ func _ready() -> void:
 		new_light.light_energy = 0.25
 		new_light.sky_mode = DirectionalLight3D.SKY_MODE_LIGHT_ONLY
 		add_child(new_light)
-	
-	game.visor_changed.connect(on_visor_changed)
 
 func on_visor_changed(visor:int):
 	print(visor)

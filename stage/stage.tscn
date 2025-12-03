@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bf8hajxlmh3lw"]
 
-[ext_resource type="Script" uid="uid://vw47tquoshc7" path="res://stage/stage.gd" id="1_re4bd"]
+[ext_resource type="Script" uid="uid://vw47tquoshc7" path="res://stage/world.gd" id="1_re4bd"]
 [ext_resource type="PackedScene" uid="uid://dmlvwah3ypol0" path="res://stage/grid_map.scn" id="1_t0f53"]
 [ext_resource type="ArrayMesh" uid="uid://ba7lhk44sk366" path="res://stage/meshes/floor.res" id="2_vkxfl"]
 [ext_resource type="Shader" uid="uid://bromrf0kc05o8" path="res://stage/skybox.gdshader" id="3_s88my"]
@@ -25,7 +25,7 @@ fog_enabled = true
 fog_density = 0.0015
 fog_sky_affect = 0.0
 
-[node name="Stage" type="Node3D"]
+[node name="World" type="Node3D"]
 script = ExtResource("1_re4bd")
 
 [node name="GridMap" parent="." instance=ExtResource("1_t0f53")]

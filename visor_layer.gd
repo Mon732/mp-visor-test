@@ -1,10 +1,12 @@
+class_name VisorLayer
 extends CanvasLayer
 
 @export var camera : Camera3D
 
 @onready var thermal : Control = $"Thermal"
 @onready var echo : Control = $"Echo"
-@onready var game : Game = get_parent()
+
+signal visor_changed(visor:Game.VISORS)
 
 const BITMASK_THERMAL = 2
 const BITMASK_ECHO = 4
@@ -15,14 +17,14 @@ func _input(_event):
 		thermal.visible = false
 		echo.visible = false
 		camera.cull_mask = BITMASK_NORMAL
-		game.visor_changed.emit(Game.VISORS.VISOR_NONE)
+		visor_changed.emit(Game.VISORS.VISOR_NONE)
 	elif (Input.is_action_just_pressed("visor_2")):
 		thermal.visible = true
 		echo.visible = false
 		camera.cull_mask = BITMASK_NORMAL | BITMASK_THERMAL
-		game.visor_changed.emit(Game.VISORS.VISOR_THERMAL)
+		visor_changed.emit(Game.VISORS.VISOR_THERMAL)
 	elif (Input.is_action_just_pressed("visor_3")):
 		thermal.visible = false
 		echo.visible = true
 		camera.cull_mask = BITMASK_NORMAL | BITMASK_ECHO
-		game.visor_changed.emit(Game.VISORS.VISOR_ECHO)
+		visor_changed.emit(Game.VISORS.VISOR_ECHO)
