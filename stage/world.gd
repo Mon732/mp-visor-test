@@ -20,7 +20,6 @@ func _ready() -> void:
 		add_child(new_light)
 
 func on_visor_changed(visor:int):
-	print(visor)
 	var item_list : PackedInt32Array = grid_map.mesh_library.get_item_list()
 
 	var new_material : Material
