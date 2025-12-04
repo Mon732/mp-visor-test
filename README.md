@@ -12,4 +12,4 @@ Project built with Godot 4.4
 - 3 - Echo
 
 # License
-This repository is licensed under GNU General Public License V3.0
+This repository is licensed under GNU General Public License v3.0
