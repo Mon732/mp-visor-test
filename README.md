@@ -1,7 +1,10 @@
 # About
 Shader experiment attempting to recreate the visors from the Metroid Prime series
 
+Project built with Godot 4.4
+
 # Controls
+- ESC - Unlock/Lock Mouse
 - WASD - Move
 - Mouse - Look around
 - 1 - Turn visors off
